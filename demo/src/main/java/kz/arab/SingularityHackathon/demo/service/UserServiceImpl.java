@@ -18,9 +18,7 @@ import java.util.List;
 public class UserServiceImpl implements UserService{
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
-
     private final BCryptPasswordEncoder passwordEncoder;
-
 
     @Autowired
     public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder) {
@@ -40,7 +38,9 @@ public class UserServiceImpl implements UserService{
         user.setStatus(Status.ACTIVE);
 
         User registeredUser = userRepository.save(user);
-        log.info("IN REGISTER - user: {} successfully registered", registeredUser);
+
+        log.info("IN register - user: {} successfully registered", registeredUser);
+
         return registeredUser;
     }
 
@@ -61,18 +61,19 @@ public class UserServiceImpl implements UserService{
     @Override
     public User findById(Long id) {
         User result = userRepository.findById(id).orElse(null);
-        if(result == null){
+
+        if (result == null) {
             log.warn("IN findById - no user found by id: {}", id);
             return null;
         }
-        log.info("IN findByUsername - user: {} found by id: {}", result, id);
+
+        log.info("IN findById - user: {} found by id: {}", result);
         return result;
     }
 
     @Override
     public void delete(Long id) {
         userRepository.deleteById(id);
-        log.info("IN delete - user with id: {} successfully deleted", id);
-
+        log.info("IN delete - user with id: {} successfully deleted");
     }
 }
