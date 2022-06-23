@@ -8,7 +8,7 @@ import kz.arab.SingularityHackathon.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,14 +22,12 @@ public class RegistrationRestControllerV1 {
 
     private final UserService userService;
 
-    private final UserRepository userRepository;
-
     @Autowired
     public RegistrationRestControllerV1(UserService userService, UserRepository userRepository) {
         this.userService = userService;
-        this.userRepository = userRepository;
     }
 
+    @Transactional
     @PostMapping
     public ResponseEntity<String> createUser(@RequestBody RegisterUserRequestDto registerUserRequestDto){
         User user = new User();
@@ -47,8 +45,10 @@ public class RegistrationRestControllerV1 {
             user.setUpdated(new Date());
             user.setStatus(Status.ACTIVE);
 
+
             if(userService.findByUsername(email) == null) {
-                userService.saveUserAndSetRole(user);
+                userService.save(user);
+                userService.setRole(user.getId());
                 return new ResponseEntity<String>(
                         "Registration is successful!",
                         HttpStatus.OK);

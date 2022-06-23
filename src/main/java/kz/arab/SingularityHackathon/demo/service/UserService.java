@@ -15,5 +15,7 @@ public interface UserService {
 
     void delete(Long id);
 
-    void saveUserAndSetRole(User user);
+    void save(User user);
+
+    void setRole(Long userId);
 }

@@ -78,9 +78,14 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void saveUserAndSetRole(User user) {
-        userRepository.saveUserAndSetRole(user);
-        log.info("IN saveUserAndSetRole - user: {} successfully deleted", user);
+    public void save(User user) {
+        userRepository.save(user);
+    }
+
+    @Override
+    public void setRole(Long userId) {
+        userRepository.setRole(userId);
+        log.info("IN saveUserAndSetRole - user id: {} successfully created", userId);
     }
 
 }
