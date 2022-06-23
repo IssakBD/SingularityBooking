@@ -34,7 +34,7 @@ public class AuthenticationRestControllerV1 {
     }
 
     @CrossOrigin("*")
-    @PostMapping("/sing-in")
+    @PostMapping("/sign-in")
     public ResponseEntity login(@RequestBody AuthenticationRequestDto requestDto) {
         try {
             String username = requestDto.getUsername();
@@ -49,6 +49,7 @@ public class AuthenticationRestControllerV1 {
             Map<Object, Object> response = new HashMap<>();
             response.put("username", username);
             response.put("token", token);
+            response.put("id", user.getId());
 
             return ResponseEntity.ok(response);
         } catch (AuthenticationException e) {
