@@ -42,7 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors().and()
                 .httpBasic().disable().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/**", "/swagger-ui/**", "/v3/api-docs/**", "/h2-console/**").permitAll()
+                .antMatchers("/api/v1/sign-in", "/api/v1/sign-up", "/swagger-ui/**", "/v3/api-docs/**", "/h2-console/**").permitAll()
                 .antMatchers("/api/v1/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
