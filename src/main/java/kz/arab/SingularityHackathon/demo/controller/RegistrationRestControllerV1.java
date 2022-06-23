@@ -3,8 +3,11 @@ package kz.arab.SingularityHackathon.demo.controller;
 import kz.arab.SingularityHackathon.demo.dto.RegisterUserRequestDto;
 import kz.arab.SingularityHackathon.demo.entity.Status;
 import kz.arab.SingularityHackathon.demo.entity.User;
+import kz.arab.SingularityHackathon.demo.repository.UserRepository;
 import kz.arab.SingularityHackathon.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,13 +22,16 @@ public class RegistrationRestControllerV1 {
 
     private final UserService userService;
 
+    private final UserRepository userRepository;
+
     @Autowired
-    public RegistrationRestControllerV1(UserService userService) {
+    public RegistrationRestControllerV1(UserService userService, UserRepository userRepository) {
         this.userService = userService;
+        this.userRepository = userRepository;
     }
 
     @PostMapping
-    public void createUser(@RequestBody RegisterUserRequestDto registerUserRequestDto){
+    public ResponseEntity<String> createUser(@RequestBody RegisterUserRequestDto registerUserRequestDto){
         User user = new User();
             String firstName = registerUserRequestDto.getFirstName();
             String lastName = registerUserRequestDto.getLastName();
@@ -41,13 +47,17 @@ public class RegistrationRestControllerV1 {
             user.setUpdated(new Date());
             user.setStatus(Status.ACTIVE);
 
-//            if(userService.findByUsername(email) != null) {
-                userService.register(user);
-//                roleService.setUserRole(userService.findByUsername(email).getId(), 1L);
-//            }
-//            else{
-//                throw new BadCredentialsException("Username is already exist. Try with other username");
-//            }
+            if(userService.findByUsername(email) == null) {
+                userService.saveUserAndSetRole(user);
+                return new ResponseEntity<String>(
+                        "Registration is successful!",
+                        HttpStatus.OK);
+            }
+            else{
+                return new ResponseEntity<String>(
+                        "Registration is NOT successful! This email already exists!",
+                        HttpStatus.CONFLICT);
+            }
 
     }
 }

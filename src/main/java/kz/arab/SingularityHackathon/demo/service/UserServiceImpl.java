@@ -74,6 +74,13 @@ public class UserServiceImpl implements UserService{
     @Override
     public void delete(Long id) {
         userRepository.deleteById(id);
-        log.info("IN delete - user with id: {} successfully deleted");
+        log.info("IN delete - user with id: {} successfully deleted", id);
     }
+
+    @Override
+    public void saveUserAndSetRole(User user) {
+        userRepository.saveUserAndSetRole(user);
+        log.info("IN saveUserAndSetRole - user: {} successfully deleted", user);
+    }
+
 }
