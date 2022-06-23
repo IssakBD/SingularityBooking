@@ -1,5 +1,6 @@
 package kz.arab.SingularityHackathon.demo.config;
 
+
 import kz.arab.SingularityHackathon.demo.security.jwt.JwtConfigurer;
 import kz.arab.SingularityHackathon.demo.security.jwt.JwtTokenProvider;
 import org.springframework.beans.factory.annotation.Autowired;
