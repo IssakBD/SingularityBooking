@@ -17,7 +17,6 @@ import java.util.Date;
 @RequestMapping("/api/v1/register")
 
 public class RegistrationRestControllerV1 {
-
     private final UserService userService;
 
     @Autowired
