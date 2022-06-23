@@ -1,4 +1,3 @@
-/home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/controller/AccountController.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/security/JwtUserDetailsService.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/dto/UserDto.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/repository/TimeSlotRepository.java
@@ -11,6 +10,7 @@
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/repository/UserRepository.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/service/TimeSlotsListingService.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/service/TimeSlotsListingServiceImpl.java
+/home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/dto/UserRoleDto.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/entity/Status.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/service/BookingCreatingService.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/controller/RegistrationRestControllerV1.java
@@ -20,9 +20,11 @@
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/service/RoomsListingService.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/controller/BookingController.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/entity/TimeSlot.java
+/home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/repository/UserRolesRepository.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/dto/AuthenticationRequestDto.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/config/SecurityConfig.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/security/jwt/JwtTokenProvider.java
+/home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/service/RoleService.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/entity/Booking.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/repository/RoomRepository.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/security/jwt/JwtConfigurer.java
@@ -33,11 +35,13 @@
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/controller/RoomController.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/entity/Room.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/controller/AuthenticationRestControllerV1.java
+/home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/service/RoleServiceImpl.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/repository/RoleRepository.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/dto/AdminUserDto.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/service/BookingListingServiceImpl.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/service/BookingEditingService.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/entity/User.java
+/home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/dto/RegisterUserRequestDto.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/entity/Role.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/security/jwt/JwtUserFactory.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/repository/BookingRepository.java
