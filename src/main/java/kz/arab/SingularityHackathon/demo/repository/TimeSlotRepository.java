@@ -10,5 +10,7 @@ import java.util.List;
 
 @Repository
 public interface TimeSlotRepository extends JpaRepository<TimeSlot, Long> {
+    public TimeSlot findAllById(Long id);
 
+    public List<TimeSlot> findTimeSlotByIdIsNot(Long id);
 }
