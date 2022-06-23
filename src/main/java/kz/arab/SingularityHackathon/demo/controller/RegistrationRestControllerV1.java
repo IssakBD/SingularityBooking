@@ -28,6 +28,7 @@ public class RegistrationRestControllerV1 {
         this.userService = userService;
     }
 
+    @CrossOrigin("*")
     @Transactional
     @PostMapping
     public ResponseEntity<String> createUser(@RequestBody RegisterUserRequestDto registerUserRequestDto){

@@ -33,7 +33,7 @@ public class AuthenticationRestControllerV1 {
         this.userService = userService;
     }
 
-    //@CrossOrigin("*")
+    @CrossOrigin("*")
     @PostMapping("/sing-in")
     public ResponseEntity login(@RequestBody AuthenticationRequestDto requestDto) {
         try {
