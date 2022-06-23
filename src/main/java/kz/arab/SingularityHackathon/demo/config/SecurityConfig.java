@@ -11,6 +11,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -25,6 +28,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public SecurityConfig(JwtTokenProvider jwtTokenProvider) {
         this.jwtTokenProvider = jwtTokenProvider;
+    }
+
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        final CorsConfiguration config = new CorsConfiguration();
+        config.setAllowCredentials(true);
+        config.addAllowedOrigin("");
+        config.addAllowedHeader("");
+        config.addAllowedMethod("OPTIONS");
+        config.addAllowedMethod("PATCH");
+        config.addAllowedMethod("GET");
+        config.addAllowedMethod("POST");
+        config.addAllowedMethod("PUT");
+        config.addAllowedMethod("DELETE");
+        source.registerCorsConfiguration("/**", config);
+        return source;
     }
 
     @Bean
@@ -47,6 +67,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.apply(new JwtConfigurer(jwtTokenProvider));
     }
+
+
 
 //    @Override
 //    protected void configure(HttpSecurity http) throws Exception {
