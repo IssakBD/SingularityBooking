@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/admin/")
+@RequestMapping("/api/v1/admin")
 public class AdminRestControllerV1 {
     private final UserService userService;
 
@@ -21,10 +21,9 @@ public class AdminRestControllerV1 {
         this.userService = userService;
     }
 
-    @GetMapping(value = "users/{id}")
+    @GetMapping("/users/{id}")
     public ResponseEntity<AdminUserDto> getUserById(@PathVariable(name = "id") Long id) {
         User user = userService.findById(id);
-        System.out.println("In controller get mapping");
         if (user == null) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
