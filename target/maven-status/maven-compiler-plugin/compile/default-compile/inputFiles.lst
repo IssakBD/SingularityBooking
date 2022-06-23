@@ -7,6 +7,7 @@
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/SingularityBookingApplication.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/security/jwt/JwtTokenProvider.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/controller/ModifyUserRestControllerV1.java
+/home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/config/CorsConfig.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/entity/Booking.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/repository/RoomRepository.java
 /home/administrator/IdeaProjects/SingularityBooking/src/main/java/kz/arab/SingularityHackathon/demo/security/jwt/JwtConfigurer.java

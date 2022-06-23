@@ -8,16 +8,20 @@ import kz.arab.SingularityHackathon.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
 @RestController
-@RequestMapping("/api/v1/register")
+@RequestMapping("/api/v1/sign-up")
 
 public class RegistrationRestControllerV1 {
     private final UserService userService;
+
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     public RegistrationRestControllerV1(UserService userService, UserRepository userRepository) {
@@ -25,7 +29,6 @@ public class RegistrationRestControllerV1 {
     }
 
     @Transactional
-    @CrossOrigin("*")
     @PostMapping
     public ResponseEntity<String> createUser(@RequestBody RegisterUserRequestDto registerUserRequestDto){
         User user = new User();
@@ -37,7 +40,7 @@ public class RegistrationRestControllerV1 {
             user.setUsername(email);
             user.setFirstName(firstName);
             user.setLastName(lastName);
-            user.setPassword(password);
+            user.setPassword(bCryptPasswordEncoder.encode(password));
             user.setEmail(email);
             user.setCreated(new Date());
             user.setUpdated(new Date());
