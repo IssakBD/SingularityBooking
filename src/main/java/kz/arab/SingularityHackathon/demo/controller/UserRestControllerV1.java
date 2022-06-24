@@ -3,6 +3,7 @@ package kz.arab.SingularityHackathon.demo.controller;
 import kz.arab.SingularityHackathon.demo.dto.BookingDto;
 import kz.arab.SingularityHackathon.demo.dto.IdDto;
 import kz.arab.SingularityHackathon.demo.dto.UserDto;
+import kz.arab.SingularityHackathon.demo.entity.Booking;
 import kz.arab.SingularityHackathon.demo.entity.TimeSlot;
 import kz.arab.SingularityHackathon.demo.entity.User;
 import kz.arab.SingularityHackathon.demo.repository.TimeSlotRepository;
@@ -52,15 +53,12 @@ public class UserRestControllerV1 {
     }
 
     @GetMapping("{id}/my-bookings")
-    public ResponseEntity getMyBookings(@PathVariable(name = "id") Long id){
+    public List<BookingDto> getMyBookings(@PathVariable(name = "id") Long id){
         List<BookingDto> booking = bookingService.findAllByUserIdAndDateGreaterThanEqual(id);
-            Map<Object, Object> response = new HashMap<>();
             if(booking == null){
-                response.put("booking", "You have not booked any rooms yet");
-                return ResponseEntity.ok(response);
+                return null;
             }
-            response.put("booking", booking);
-            return ResponseEntity.ok(response);
+            return booking;
     }
 
     @GetMapping("available-time/{room}/{date}")
