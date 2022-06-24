@@ -14,6 +14,7 @@ public class BookingDtoMapper implements RowMapper<BookingDto> {
         bookingDto.setTimeSlot(rs.getString("time_slot"));
         bookingDto.setDate(rs.getDate("date"));
         bookingDto.setRoom(rs.getLong("room_number"));
+        bookingDto.setPurpose(rs.getString("purpose"));
 
         return bookingDto;
     }

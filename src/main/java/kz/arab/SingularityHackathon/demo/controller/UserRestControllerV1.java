@@ -1,9 +1,8 @@
 package kz.arab.SingularityHackathon.demo.controller;
 
-import kz.arab.SingularityHackathon.demo.dto.BookingDto;
-import kz.arab.SingularityHackathon.demo.dto.IdDto;
-import kz.arab.SingularityHackathon.demo.dto.UserDto;
+import kz.arab.SingularityHackathon.demo.dto.*;
 import kz.arab.SingularityHackathon.demo.entity.Booking;
+import kz.arab.SingularityHackathon.demo.entity.Rooms;
 import kz.arab.SingularityHackathon.demo.entity.TimeSlot;
 import kz.arab.SingularityHackathon.demo.entity.User;
 import kz.arab.SingularityHackathon.demo.repository.TimeSlotRepository;
@@ -13,10 +12,7 @@ import kz.arab.SingularityHackathon.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.util.*;
@@ -102,4 +98,23 @@ public class UserRestControllerV1 {
         response.put("availableTimeSlots", answer);
         return ResponseEntity.ok(response);
     }
+
+    @PostMapping("book")
+    public ResponseEntity book(@RequestBody BookInformationDto bookInformationDto){
+        TimeSlot timeSlot = timeSlotRepository.findTimeSlotByTimeSlot(bookInformationDto.getTimeSlot());
+        Long timeSlotId = timeSlot.getId();
+
+        Rooms rooms = roomService.findAllByRoomNumber(bookInformationDto.getRoomNumber());
+        Long roomId = rooms.getId();
+
+        String purpose = bookInformationDto.getPurpose();
+
+        BookingDtoToDB bookingDtoToDB = new BookingDtoToDB(bookInformationDto.getUserId(), timeSlotId, bookInformationDto.getDate(), roomId, bookInformationDto.getPurpose());
+
+        bookingService.saveNewBooking(bookingDtoToDB);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
 }

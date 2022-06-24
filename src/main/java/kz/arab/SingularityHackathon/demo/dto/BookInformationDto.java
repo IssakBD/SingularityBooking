@@ -2,13 +2,13 @@ package kz.arab.SingularityHackathon.demo.dto;
 
 import lombok.Data;
 
-import java.util.Date;
+import java.sql.Date;
 
 @Data
-public class BookingDto {
-
+public class BookInformationDto {
+    private Long userId;
     private String timeSlot;
     private Date date;
-    private Long room;
+    private Long roomNumber;
     private String purpose;
 }

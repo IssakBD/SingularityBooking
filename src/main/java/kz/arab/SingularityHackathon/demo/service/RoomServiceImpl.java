@@ -16,4 +16,9 @@ public class RoomServiceImpl implements RoomService{
     public Rooms findFirstByRoomNumber(Long roomNumber) {
         return roomsRepository.findFirstByRoomNumber(roomNumber);
     }
+
+    @Override
+    public Rooms findAllByRoomNumber(Long roomNumber) {
+        return roomsRepository.findAllByRoomNumber(roomNumber);
+    }
 }
